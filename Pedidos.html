@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velas Personalizadas de Lujo - Regalo Navideño Exclusivo</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Configuración de Color y Tipografía en Dark Mode (Navideño Elegante) */
+        :root {
+            --color-primary-gold: #fcd34d; /* Dorado para acentos y luz */
+            --color-secondary-red: #991b1b; /* Rojo Borgoña/Vino (Sober, Elegant Red-700) */
+            --color-background: #0f172a; /* Azul Oscuro Profundo (Navy) */
+            --color-card: #1e293b; /* Gris oscuro para tarjetas */
+            --color-text: #f8fafc; /* Blanco Suave */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text);
+        }
+        .card {
+            background-color: var(--color-card);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+        }
+        /* Botón Primario: Rojo Navideño Sobrio */
+        .btn-primary {
+            background-color: var(--color-secondary-red); /* Borgoña */
+            color: var(--color-text); /* Texto blanco */
+            font-weight: 700;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #7f1d1d; /* Rojo más oscuro al pasar el mouse */
+            transform: translateY(-2px);
+            /* Sombra roja notoria */
+            box-shadow: 0 8px 20px -3px rgba(153, 27, 27, 0.7); 
+        }
+        /* Botón Secundario (para el CTA condicional de personalización) */
+        .btn-secondary {
+            background-color: #334155; /* Slate-600 */
+            color: var(--color-primary-gold);
+            font-weight: 700;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .btn-secondary:hover {
+            background-color: #475569; /* Slate-700 */
+            transform: translateY(-2px);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .gallery-item {
+            cursor: pointer;
+            transition: box-shadow 0.3s;
+        }
+        .gallery-item:hover {
+            /* Sombra Dorada sutil para las fotos */
+            box-shadow: 0 15px 30px -5px rgba(252, 211, 77, 0.2); 
+        }
+        /* Utilidades de Acento de Color */
+        .accent-gold {
+            color: var(--color-primary-gold);
+        }
+        .accent-red {
+            color: var(--color-secondary-red);
+        }
+        .border-gold {
+            border-left-color: var(--color-primary-gold);
+        }
+        /* Estilo para el Lightbox (Modal) */
+        .modal {
+            background-color: rgba(0, 0, 0, 0.9);
+            transition: opacity 0.3s ease-in-out;
+        }
+        /* Estilo para FAQ (Accordion) */
+        .faq-item summary {
+            cursor: pointer;
+            list-style: none; 
+        }
+        .faq-item summary::after {
+            content: '+';
+            float: right;
+            transition: transform 0.3s;
+            color: var(--color-secondary-red);
+            font-size: 1.25rem;
+        }
+        .faq-item[open] summary::after {
+            content: '-';
+        }
+        /* Titulo principal */
+        .hero-title {
+            text-shadow: 0 0 15px rgba(252, 211, 77, 0.6);
+        }
+        /* Clase para el botón flotante en móvil (oculta texto en xs/sm) */
+        @media (max-width: 639px) { /* Tailwind's 'sm' breakpoint is 640px */
+            .mobile-cta-text {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 sm:p-8">
+
+    <!-- Encabezado / Barra de Navegación -->
+    <header class="max-w-6xl mx-auto py-6 mb-8">
+        <div class="flex flex-col sm:flex-row justify-between items-center border-b border-gray-700 pb-4">
+            <!-- Título ajustado para móvil -->
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-wider mb-3 sm:mb-0 text-center sm:text-left">
+                LUJO <span class="accent-red">ARTESANAL</span> Y PERSONALIZACIÓN
+            </h1>
+            <!-- Navegación ajustada para móvil -->
+            <nav class="space-x-3 sm:space-x-4 flex justify-center w-full sm:w-auto">
+                <a href="#productos" class="text-sm sm:text-base font-medium text-white hover:text-red-700 transition duration-150">Diseña</a>
+                <a href="#exclusiva" class="text-sm sm:text-base font-medium text-white hover:text-red-700 transition duration-150">Personalizada</a>
+                <a href="#empaque" class="text-sm sm:text-base font-medium text-white hover:text-red-700 transition duration-150">Empaque</a>
+                <a href="#testimonios" class="text-sm sm:text-base font-medium text-white hover:text-red-700 transition duration-150">Testimonios</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- SECCIÓN HERO DE IMAGEN PRINCIPAL -->
+    <section class="max-w-6xl mx-auto mb-16">
+        <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl">
+             <!-- Imagen Principal Destacada (Aspecto de video para responsividad) - Se mantiene la URL inicial -->
+            <img 
+                src="https://github.com/jimbogc/icono/blob/main/1764723361009.jpg?raw=true" 
+                alt="[Vela de lujo principal, hecha a mano, decorada para navidad]"
+                onerror="this.onerror=null; this.src='https://placehold.co/1200x600/1e293b/fcd34d?text=IMAGEN+PRINCIPAL+IMPACTANTE'; this.alt='Vela de lujo principal, hecha a mano, decorada para navidad';"
+                class="w-full h-auto aspect-video object-cover transition duration-500 hover:scale-[1.01]"
+            >
+            <!-- Overlay de Texto sobre la imagen (Mejora la legibilidad) -->
+            <div class="absolute inset-0 bg-black/40 flex items-center justify-center p-6 sm:p-10">
+                 <!-- Título principal escalado para móviles -->
+                <div class="text-center">
+                    <h2 class="text-4xl sm:text-7xl font-black mb-2 hero-title accent-gold leading-tight">
+                        El Regalo Más Exclusivo
+                    </h2>
+                    <p class="text-lg sm:text-2xl text-gray-200 max-w-3xl mx-auto font-light">
+                        Velas listas para regalar, diseñadas con nuestro toque único para hacer de esta Navidad algo inolvidable.
+                    </p>
+                    <!-- CTA en el Hero, ahora redirige al CTA condicional (visible solo en desktop) -->
+                    <a 
+                        href="#exclusiva"
+                        class="hidden sm:inline-flex mt-6 py-3 px-8 rounded-full text-lg space-x-3 btn-secondary shadow-lg hover:shadow-xl hover:scale-105 transform duration-300"
+                    >
+                         <span>Personalización Total: ¡Ver Condiciones!</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FIN SECCIÓN HERO DE IMAGEN PRINCIPAL -->
+
+
+    <!-- Sección de Productos con Énfasis en Personalización -->
+    <main class="max-w-6xl mx-auto">
+        <h2 id="productos" class="text-3xl sm:text-5xl font-bold text-center mb-12 text-white">
+            Selecciona tu Acabado Base
+        </h2>
+
+        <!-- Contenedor de las 2 Velas Principales (Se apilan en móvil) -->
+        <div class="grid md:grid-cols-2 gap-8 sm:gap-10 mb-10">
+
+            <!-- Card 1: Acabado Sobrio (Sin Escarcha) - USA LA IMAGEN 4 NUEVA -->
+            <div class="card p-6 sm:p-8 rounded-2xl transition duration-300 transform hover:scale-[1.02]">
+                <h3 class="text-2xl sm:text-3xl font-bold mb-4 accent-gold">Acabado Sobrio (Sin Escarcha)</h3> 
+                
+                <!-- Imagen de Vela Sobria - AHORA CON URL 4 NUEVA -->
+                <img 
+                    src="https://github.com/jimbogc/icono/blob/main/1764723976606.jpg?raw=true" 
+                    alt=""
+                    onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/fcd34d?text=Opción+Sobria+($12.000+COP)'; this.alt='Vela personalizada sin escarcha';"
+                    class="w-full h-56 sm:h-72 object-cover rounded-lg mb-6 shadow-xl transition duration-300 hover:opacity-90"
+                >
+
+                <p class="text-base sm:text-gray-300 mb-6 border-l-4 border-gold pl-4"> 
+                    Ideal para un ambiente minimalista y formal. Elige este diseño pulcro y elegante. Perfecto para cualquier decoración.
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8">
+                    <span class="text-3xl sm:text-4xl font-extrabold text-white mb-2 sm:mb-0">
+                        $12.000 <span class="text-sm font-normal accent-gold">COP</span>
+                    </span>
+                    <span class="text-xs sm:text-sm font-medium text-gray-400">
+                        (Precio Base - Vela Lista)
+                    </span>
+                </div>
+                
+                <!-- Botón de Pedido - Chat Link (WhatsApp) -->
+                <a 
+                    href="https://wa.me/573197845220?text=Hola,%20me%20interesa%20la%20Vela%20Personalizada%20Sin%20Escarcha%20de%20$12.000%20COP.%20Quiero%20comprar."
+                    target="_blank"
+                    class="btn-primary w-full py-3 sm:py-4 rounded-xl text-center flex items-center justify-center space-x-3 text-lg"
+                >
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.003 2.001a10 10 0 00-8.91 14.846L2 22l6.216-1.859a10 10 0 105.787-18.14zm-.006 17.506a7.973 7.973 0 01-4.04-1.106l-.286-.17-.798.24l-1.127.34-1.284-.39 1.123-1.884-.184-.287a7.973 7.973 0 01-1.094-4.045 7.994 7.994 0 0115.98 0 7.972 7.972 0 01-1.107 4.037l-.17.286 1.883 1.123-.39 1.284-.34 1.127-.24-.798-.17-.286a7.97 7.97 0 01-4.037 1.094zM16.92 13.918a.63.63 0 00-.91-.04l-2.03-1.55a.39.39 0 00-.47 0 .33.33 0 00-.16.27l.15 1.83a.52.52 0 01-.1.35.6.6 0 01-.39.17l-1.07-.15a.5.5 0 01-.48-.27 3.32 3.32 0 01-.98-1.93 5.34 5.34 0 01.35-2.22c.16-.32.4-.53.68-.76l.16-.13a.6.6 0 01.91.04l2.03 1.55c.16.12.24.32.24.52s-.08.4-.24.52l-.15.11z"/></svg>
+                    <span>Comprar Ahora ($12.000 COP)</span>
+                </a>
+            </div>
+
+            <!-- Card 2: Acabado Festivo (Con Escarcha) - USA LA IMAGEN 5 NUEVA -->
+            <div class="card p-6 sm:p-8 rounded-2xl transition duration-300 transform hover:scale-[1.02]">
+                <h3 class="text-2xl sm:text-3xl font-bold mb-4 accent-gold">Acabado Festivo (Con Escarcha)</h3> 
+                
+                <!-- Imagen de Vela Festiva - AHORA CON URL 5 NUEVA -->
+                <img 
+                    src="https://github.com/jimbogc/icono/blob/main/1764724138962.jpg?raw=true" 
+                    alt=""
+                    onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/fcd34d?text=Opción+Festiva+($15.000+COP)'; this.alt='Vela personalizada con escarcha';"
+                    class="w-full h-56 sm:h-72 object-cover rounded-lg mb-6 shadow-xl transition duration-300 hover:opacity-90"
+                >
+
+                <p class="text-base sm:text-gray-300 mb-6 border-l-4 border-gold pl-4"> 
+                    Para un ambiente de celebración y brillo. Nuestro acabado premium con escarcha, ideal para la temporada navideña.
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8">
+                    <span class="text-3xl sm:text-4xl font-extrabold text-white mb-2 sm:mb-0">
+                        $15.000 <span class="text-sm font-normal accent-gold">COP</span>
+                    </span>
+                    <span class="text-xs sm:text-sm font-medium text-gray-400">
+                        (Precio Base - Vela Lista)
+                    </span>
+                </div>
+
+                <!-- Botón de Pedido - Chat Link (WhatsApp) -->
+                <a 
+                    href="https://wa.me/573197845220?text=Hola,%20me%20interesa%20la%20Vela%20Personalizada%20Con%20Escarcha%20de%20$15.000%20COP.%20Quiero%20comprar."
+                    target="_blank"
+                    class="btn-primary w-full py-3 sm:py-4 rounded-xl text-center flex items-center justify-center space-x-3 text-lg"
+                >
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.003 2.001a10 10 0 00-8.91 14.846L2 22l6.216-1.859a10 10 0 105.787-18.14zm-.006 17.506a7.973 7.973 0 01-4.04-1.106l-.286-.17-.798.24l-1.127.34-1.284-.39 1.123-1.884-.184-.287a7.973 7.973 0 01-1.094-4.045 7.994 7.994 0 0115.98 0 7.972 7.972 0 01-1.107 4.037l-.17.286 1.883 1.123-.39 1.284-.34 1.127-.24-.798-.17-.286a7.97 7.97 0 01-4.037 1.094zM16.92 13.918a.63.63 0 00-.91-.04l-2.03-1.55a.39.39 0 00-.47 0 .33.33 0 00-.16.27l.15 1.83a.52.52 0 01-.1.35.6.6 0 01-.39.17l-1.07-.15a.5.5 0 01-.48-.27 3.32 3.32 0 01-.98-1.93 5.34 5.34 0 01.35-2.22c.16-.32.4-.53.68-.76l.16-.13a.6.6 0 01.91.04l2.03 1.55c.16.12.24.32.24.52s-.08.4-.24.52l-.15.11z"/></svg>
+                    <span>Comprar Ahora ($15.000 COP)</span>
+                </a>
+            </div>
+
+        </div>
+        
+        <!-- Sección de Personalización Exclusiva (Condicional) -->
+        <section id="exclusiva" class="py-12 mb-16 max-w-4xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 text-white accent-gold">
+                Diseño 100% Exclusivo: Personalización Total
+            </h2>
+            <div class="card p-6 sm:p-8 rounded-2xl border-4 border-red-700/50 shadow-2xl bg-red-900/20 text-center">
+                
+                <!-- Advertencia de Disponibilidad y Costo -->
+                <p class="text-xl sm:text-2xl font-bold mb-4 accent-red">
+                    ¡IMPORTANTE! EXCLUSIVO BAJO PEDIDO
+                </p>
+                <p class="text-base sm:text-lg text-gray-200 mb-6">
+                    Las personalizaciones que requieren diseños, colores, o formas fuera de nuestros dos acabados base (Sobrio y Festivo) tienen un **costo superior (variable)**. 
+                    Además, su fabricación depende de la **disponibilidad de tiempo** en la agenda de nuestros artesanos, especialmente en temporada alta como Navidad.
+                </p>
+                <p class="text-lg sm:text-xl font-semibold mb-6 accent-gold">
+                    **Precio: A Cotizar** | **Entrega: Sujeta a Calendario**
+                </p>
+
+                <!-- CTA para la Cotización de Diseño Exclusivo -->
+                <a 
+                    href="https://wa.me/573197845220?text=Hola,%20me%20interesa%20una%20Vela%20100%25%20Personalizada.%20Quiero%20saber%20la%20disponibilidad%20de%20tiempo%20y%20el%20costo%20de%20una%20cotización."
+                    target="_blank"
+                    class="btn-secondary w-full sm:w-auto py-3 px-8 rounded-xl text-center inline-flex items-center justify-center space-x-2 text-lg"
+                >
+                    <span>Solicitar Cotización Exclusiva</span>
+                </a>
+            </div>
+        </section>
+
+
+        <!-- Sección de Empaque Exclusivo -->
+        <section id="empaque" class="py-12 mb-16">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-10 text-white">
+                Empaque de Lujo: La Presentación es Todo
+            </h2>
+            <div class="card p-6 sm:p-8 rounded-2xl max-w-4xl mx-auto border-4 border-gold/50 shadow-2xl">
+                <p class="text-base sm:text-xl text-gray-300 text-center mb-6">
+                    Entendemos que un regalo tan especial merece una presentación a la altura. Por eso, cada vela, incluyendo las opciones base, se entrega en un embalaje exclusivo diseñado para impresionar.
+                </p>
+                <ul class="text-left space-y-3 text-base sm:text-lg text-white">
+                    <li class="flex items-center space-x-3">
+                        <span class="accent-gold text-2xl">•</span>
+                        <span>Caja con diseño temático navideño sobrio.</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <span class="accent-gold text-2xl">•</span>
+                        <span>Papel de seda protector y tarjeta de personalización.</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <span class="accent-gold text-2xl">•</span>
+                        <span>Listo para regalar, sin necesidad de envoltura adicional.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+        <!-- Sección de Testimonios (Ajustada a Grid de 1 Columna en móvil) -->
+        <section id="testimonios" class="py-12 bg-gray-900/50 rounded-2xl mb-16 p-6 sm:p-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-10 accent-gold">
+                Confianza en la Calidad y Exclusividad
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
+                
+                <!-- Testimonio 1 -->
+                <div class="p-4 sm:p-6 card rounded-xl border border-gray-700">
+                    <p class="italic text-gray-300 mb-4 text-sm sm:text-base">
+                        "El nivel de personalización superó mis expectativas. La presentación en la caja de lujo fue perfecta para mi intercambio de regalos corporativo. Un producto realmente elegante."
+                    </p>
+                    <p class="font-semibold accent-red text-sm sm:text-base">- Sofía P. (Cali)</p>
+                </div>
+
+                <!-- Testimonio 2 -->
+                <div class="p-4 sm:p-6 card rounded-xl border border-gray-700">
+                    <p class="italic text-gray-300 mb-4 text-sm sm:text-base">
+                        "Pedí la versión con escarcha y el brillo es muy fino, nada vulgar. La calidad de la cera y el empaque justifican totalmente el precio. ¡Un detalle que distingue!"
+                    </p>
+                    <p class="font-semibold accent-red text-sm sm:text-base">- Ricardo M. (Bogotá)</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Sección de Galería de 8 Imágenes (Ajuste de Columnas) -->
+        <section id="galeria" class="py-12">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-10 text-white">
+                Galería de Diseños Personalizados
+            </h2>
+            <p class="text-center text-gray-400 mb-10 sm:mb-12 max-w-2xl mx-auto text-base">
+                Inspírate con algunos diseños de nuestros clientes y el detalle de nuestros acabados. Haz clic para ver el empaque.
+            </p>
+
+            <!-- Arreglo de URLs Únicas (7 URLs + 1 repetición para llenar 8 slots) -->
+            <!-- 0: Inicial | 1, 2: Anteriores | 3, 4, 5, 6: Nuevas -->
+            <!-- Velas en la Galería: 3, 4, 5, 6, 0, 1, 2, 3 (Se usa la 3 al final para llenar el slot) -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                
+                <!-- Item 1 (URL 3 Nueva) -->
+                <div class="gallery-item rounded-xl overflow-hidden bg-gray-800" data-img="https://github.com/jimbogc/icono/blob/main/1764723783090.jpg?raw=true" data-alt="Vela Roja con Elementos Dorados y Escarcha">
+                    <img 
+                        src="https://github.com/jimbogc/icono/blob/main/1764723783090.jpg?raw=true" 
+                        alt=""
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x400/1e293b/fcd34d?text=Diseño+1';"
+                        class="w-full h-40 sm:h-48 object-cover transform transition duration-500 ease-in-out"
+                    >
+                </div>
+                
+                <!-- Item 2 (URL 4 Nueva) -->
+                <div class="gallery-item rounded-xl overflow-hidden bg-gray-800" data-img="https://github.com/jimbogc/icono/blob/main/1764723842238.jpg?raw=true" data-alt="Vela Verde Oscuro con Hoja de Oro">
+                    <img 
+                        src="https://github.com/jimbogc/icono/blob/main/1764723842238.jpg?raw=true" 
+                        alt=""
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x400/1e293b/fcd34d?text=Diseño+2';"
+                        class="w-full h-40 sm:h-48 object-cover transform transition duration-500 ease-in-out"
+                    >
+                </div>
+
+                <!-- Item 3 (URL 5 Nueva) -->
+                <div class="gallery-item rounded-xl overflow-hidden bg-gray-800" data-img="https://github.com/jimbogc/icono/blob/main/1764723976606.jpg?raw=true" data-alt="Vela de Color Marfil con Etiqueta Elegante">
+                    <img 
+                        src="https://github.com/jimbogc/icono/blob/main/1764723976606.jpg?raw=true" 
+                        alt=""
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x400/1e293b/fcd34d?text=Diseño+3';"
+                        class="w-full h-40 sm:h-48 object-cover transform transition duration-500 ease-in-out"
+                    >
+                </div>
+
+                <!-- Item 4 (URL 6 Nueva) -->
+                <div class="gallery-item rounded-xl overflow-hidden bg-gray-800" data-img="https://github.com/jimbogc/icono/blob/main/1764724138962.jpg?raw=true" data-alt="Detalle de Vela Roja Navideña con Bayas y Ramas">
+                    <img 
+                        src="https://github.com/jimbogc/icono/blob/main/1764724138962.jpg?raw=true" 
+                        alt=""
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x400/1e293b/fcd34d?text=Diseño+4';"
+                        class="w-full h-40 sm:h-48 object-cover transform transition duration-500 ease-in-out"
+                    >
+                </div>
+
+                <!-- Item 5 (URL 0 Inicial) -->
+                <div class="gallery-item rounded-xl overflow-hidden bg-gray-800" data-img="https://github.com/jimbogc/icono/blob/main/1764723361009.jpg?raw=true" data-alt="Vela de Lujo en un Ambiente de Regalo">
+                    <img 
+                        src="https://github.com/jimbogc/icono/blob/main/1764723361009.jpg?raw=true" 
+                        alt=""
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x400/1e293b/fcd34d?text=Diseño+5';"
+                        class="w-full h-40 sm:h-48 object-cover transform transition duration-500 ease-in-out"
+                    >
+                </div>
+
+                <!-- Item 6 (URL 1 Anterior) -->
+                <div class="gallery-item rounded-xl overflow-hidden bg-gray-800" data-img="https://github.com/jimbogc/icono/blob/main/1764723459018.jpg?raw=true" data-alt="Vela Sobria en Envase de Lujo">
+                    <img 
+                        src="https://github.com/jimbogc/icono/blob/main/1764723459018.jpg?raw=true" 
+                        alt=""
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x400/1e293b/fcd34d?text=Diseño+6';"
+                        class="w-full h-40 sm:h-48 object-cover transform transition duration-500 ease-in-out"
+                    >
+                </div>
+
+                <!-- Item 7 (URL 2 Anterior) -->
+                <div class="gallery-item rounded-xl overflow-hidden bg-gray-800" data-img="https://github.com/jimbogc/icono/blob/main/1764723592144.jpg?raw=true" data-alt="Vela Festiva con Escarcha Dorada">
+                    <img 
+                        src="https://github.com/jimbogc/icono/blob/main/1764723592144.jpg?raw=true" 
+                        alt=""
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x400/1e293b/fcd34d?text=Diseño+7';"
+                        class="w-full h-40 sm:h-48 object-cover transform transition duration-500 ease-in-out"
+                    >
+                </div>
+
+                <!-- Item 8 (URL 3 Nueva - REPETICIÓN) -->
+                <div class="gallery-item rounded-xl overflow-hidden bg-gray-800" data-img="https://github.com/jimbogc/icono/blob/main/1764723783090.jpg?raw=true" data-alt="Vela Roja Elegante">
+                    <img 
+                        src="https://github.com/jimbogc/icono/blob/main/1764723783090.jpg?raw=true" 
+                        alt=""
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x400/1e293b/fcd34d?text=Diseño+8';"
+                        class="w-full h-40 sm:h-48 object-cover transform transition duration-500 ease-in-out"
+                    >
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Sección de Preguntas Frecuentes (Ajuste de Padding) -->
+        <section id="faqs" class="py-12">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-10 accent-gold">
+                Preguntas Comunes sobre Personalización y Envíos
+            </h2>
+            <div class="max-w-3xl mx-auto space-y-4 px-2 sm:px-0">
+                
+                 <!-- FAQ 1 (Personalización Exclusiva) -->
+                <details class="faq-item p-4 card rounded-xl border border-gray-700">
+                    <summary class="font-bold accent-red py-1">
+                        ¿Cómo funciona la cotización de un Diseño Exclusivo (100% Personalizado)?
+                    </summary>
+                    <div class="pt-2 text-gray-300 border-t border-gray-700 mt-2 text-sm sm:text-base">
+                        Al hacer clic en el botón de "Solicitar Cotización Exclusiva", nos comunicaremos contigo por WhatsApp para discutir los detalles de tu diseño (formas, colores y acabados especiales) y te indicaremos los costos y el tiempo de entrega según la complejidad y nuestra disponibilidad en la agenda de producción.
+                    </div>
+                </details>
+
+
+                <!-- FAQ 2 (Sin Aroma) -->
+                <details class="faq-item p-4 card rounded-xl border border-gray-700">
+                    <summary class="font-bold accent-red py-1">
+                        ¿Tienen algún tipo de aroma o esencia?
+                    </summary>
+                    <div class="pt-2 text-gray-300 border-t border-gray-700 mt-2 text-sm sm:text-base">
+                        No. Nuestras velas están diseñadas para ser completamente neutras, enfocándose únicamente en la belleza visual, la luz y el diseño artesanal, ideales para personas sensibles a los aromas.
+                    </div>
+                </details>
+
+                <!-- FAQ 3 (Empaque Exclusivo) -->
+                <details class="faq-item p-4 card rounded-xl border border-gray-700">
+                    <summary class="font-bold accent-red py-1">
+                        ¿El empaque exclusivo tiene un costo adicional?
+                    </summary>
+                    <div class="pt-2 text-gray-300 border-t border-gray-700 mt-2 text-sm sm:text-base">
+                        ¡No! El empaque de lujo navideño es parte integral de nuestra propuesta de valor y está incluido en el precio de todas las velas, incluyendo las opciones base.
+                    </div>
+                </details>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="max-w-6xl mx-auto mt-16 py-6 border-t border-gray-700 text-center">
+        <p class="text-base text-gray-400 mb-2">
+            **Número de Contacto:** 319 784 52 20
+        </p>
+        <p class="text-sm text-gray-300">
+            Para iniciar tu pedido o cotización especial, contáctanos: 
+            <a href="https://wa.me/573197845220" target="_blank" class="accent-gold hover:text-yellow-300 font-bold transition duration-150"> 
+                Chat Directo (WhatsApp)
+            </a>
+        </p>
+        <p class="text-xs mt-4 text-gray-500">
+            &copy; 2025 Velas Personalizadas. Todos los derechos reservados.
+        </p>
+    </footer>
+
+    <!-- Lightbox/Modal para la Galería (No necesita cambios de responsividad, ya usa viewport units) -->
+    <div id="lightbox" class="modal fixed inset-0 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none" onclick="closeLightbox()">
+        <div class="relative max-w-4xl max-h-full">
+            <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[80vh] rounded-lg shadow-2xl transition-transform duration-300 transform scale-90">
+            <button class="absolute top-4 right-4 text-white text-4xl font-light hover:text-red-700 transition" onclick="closeLightbox()">
+                &times;
+            </button>
+        </div>
+    </div>
+    
+    <!-- Botón CTA Flotante (Ajustado para móvil) -->
+    <a 
+        href="https://wa.me/573197845220?text=Hola,%20quisiera%20hacer%20una%20pregunta%20sobre%20las%20velas%20de%20lujo." 
+        target="_blank" 
+        class="fixed bottom-6 right-6 z-40 p-3 sm:p-4 rounded-full shadow-2xl btn-primary flex items-center justify-center space-x-2 text-white text-sm font-semibold transition duration-300"
+    >
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.003 2.001a10 10 0 00-8.91 14.846L2 22l6.216-1.859a10 10 0 105.787-18.14zm-.006 17.506a7.973 7.973 0 01-4.04-1.106l-.286-.17-.798.24l-1.127.34-1.284-.39 1.123-1.884-.184-.287a7.973 7.973 0 01-1.094-4.045 7.994 7.994 0 0115.98 0 7.972 7.972 0 01-1.107 4.037l-.17.286 1.883 1.123-.39 1.284-.34 1.127-.24-.798-.17-.286a7.97 7.97 0 01-4.037 1.094zM16.92 13.918a.63.63 0 00-.91-.04l-2.03-1.55a.39.39 0 00-.47 0 .33.33 0 00-.16.27l.15 1.83a.52.52 0 01-.1.35.6.6 0 01-.39.17l-1.07-.15a.5.5 0 01-.48-.27 3.32 3.32 0 01-.98-1.93 5.34 5.34 0 01.35-2.22c.16-.32.4-.53.68-.76l.16-.13a.6.6 0 01.91.04l2.03 1.55c.16.12.24.32.24.52s-.08.4-.24.52l-.15.11z"/></svg>
+        <span class="mobile-cta-text sm:inline">Preguntar por WhatsApp</span>
+    </a>
+
+
+    <script>
+        // Funcionalidad del Lightbox (Galería Interactiva)
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        // Función que maneja la apertura del modal (lightbox)
+        function openLightbox(src, alt) {
+            
+            // Si la imagen de origen falló y usa el placeholder de error, usa esa imagen para el lightbox
+            const imgElement = document.querySelector(`img[src='${src}']`);
+            if (imgElement && imgElement.naturalWidth === 0) {
+                // Si la imagen original no cargó, usamos el src del placeholder de error
+                src = imgElement.src;
+            }
+            
+            lightboxImg.src = src;
+            lightboxImg.alt = alt;
+            lightbox.classList.remove('pointer-events-none', 'opacity-0');
+            lightbox.classList.add('opacity-100');
+        }
+
+        // Función que maneja el cierre del modal (lightbox)
+        function closeLightbox() {
+            lightbox.classList.remove('opacity-100');
+            lightbox.classList.add('opacity-0', 'pointer-events-none');
+            // Retrasar la limpieza de la imagen hasta que la transición termine
+            setTimeout(() => {
+                 lightboxImg.src = "";
+            }, 300);
+        }
+
+        // Asigna el evento click a cada item de la galería
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgElement = item.querySelector('img');
+                const imgSrc = imgElement.src; // Usamos el src del elemento img, que ya fue resuelto por el navegador
+                const imgAlt = item.getAttribute('data-alt');
+                openLightbox(imgSrc, imgAlt);
+            });
+        });
+        
+        // Cierra el lightbox al presionar ESC y al hacer click fuera de la imagen (gracias al onclick="closeLightbox()" en el div principal)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('opacity-100')) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const contactNumber = "573197845220";
+            if (contactNumber === "573197845220") {
+                console.log(`INFO: Número de contacto configurado a: ${contactNumber}`);
+            }
+            console.log("Galería actualizada con nuevas imágenes para evitar repeticiones.");
+        });
+    </script>
+</body>
+</html>
